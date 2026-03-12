@@ -5,7 +5,7 @@ from cocotb.triggers import RisingEdge, Timer
 async def axi_write(dut, addr, data):
 """AXI-Lite write using ui_in and uio_in"""
 
-```
+
 # idle
 dut.ui_in.value = 0
 dut.uio_in.value = 0
@@ -29,12 +29,12 @@ for _ in range(2000):
 
 dut._log.error("WRITE timeout ❌")
 return False
-```
+
 
 async def axi_read(dut, addr):
 """AXI-Lite read"""
 
-```
+
 dut.ui_in.value = 0
 await RisingEdge(dut.clk)
 
@@ -56,12 +56,12 @@ for _ in range(2000):
 
 dut._log.error("READ timeout ❌")
 return None
-```
+
 
 @cocotb.test()
 async def axi4lite_test(dut):
 
-```
+
 # clock
 cocotb.start_soon(Clock(dut.clk, 10, units="ns").start())
 
@@ -103,4 +103,3 @@ if read_data == write_data:
     dut._log.info("TEST PASSED ✅")
 else:
     dut._log.error(f"TEST FAILED ❌ expected={write_data} got={read_data}")
-```
